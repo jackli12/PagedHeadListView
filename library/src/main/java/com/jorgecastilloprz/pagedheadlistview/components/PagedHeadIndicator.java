@@ -88,7 +88,10 @@ public class PagedHeadIndicator extends AbstractPagedHeadIndicator {
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        int relativePositionOffset = indicatorView.getWidth() * position + positionOffsetPixels / pageCount;
+        int relativePositionOffset = 0;
+        if (pageCount != 0) {
+            relativePositionOffset = indicatorView.getWidth() * position + positionOffsetPixels / pageCount;
+        }
 
         if (positionOffset != 0) {
             LayoutParams indicatorParams = (LayoutParams) indicatorView.getLayoutParams();
